@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<article class="post">
+    <div class="post-hero">
+        {% if page.image %}
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+        {% else %}
+        <div class="post-hero-placeholder"></div>
+        {% endif %}
+    </div>
+
+    <header class="post-header">
+        <a href="{{ '/' | relative_url }}#projects" class="post-back">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Selected Work
+        </a>
+        {% if page.tag %}
+        <p class="post-eyebrow">{{ page.tag }}</p>
+        {% endif %}
+        <h1 class="post-title">{{ page.title }}</h1>
+        {% if page.description %}
+        <p class="post-lead">{{ page.description }}</p>
+        {% endif %}
+        <div class="post-meta-bar">
+            {% if page.year %}
+            <span class="post-meta-item">
+                <span class="post-meta-label">Release</span>
+                <span class="post-meta-value">{{ page.year }}</span>
+            </span>
+            {% endif %}
+            {% if page.platform %}
+            <span class="post-meta-item">
+                <span class="post-meta-label">Platform</span>
+                <span class="post-meta-value">{{ page.platform }}</span>
+            </span>
+            {% endif %}
+            {% if page.role %}
+            <span class="post-meta-item">
+                <span class="post-meta-label">Role</span>
+                <span class="post-meta-value">{{ page.role }}</span>
+            </span>
+            {% endif %}
+        </div>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+</article>

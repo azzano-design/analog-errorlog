@@ -1,0 +1,98 @@
+---
+layout: default
+---
+{{ content }}
+
+<section class="hero" id="home" aria-labelledby="hero-heading">
+    <div id="hero-canvas" aria-hidden="true">
+        <div id="hero-bg-fallback"></div>
+    </div>
+    <div class="hero-content">
+        <p class="hero-eyebrow">Personal experiments and designs</p>
+        <h1 class="hero-h1" id="hero-heading" aria-label="Analog Error log">
+            Analog-<br>Errorlog<span class="hero-cursor" aria-hidden="true"></span>
+        </h1>
+        <p class="hero-sub">
+            Behind the scenes of Azzano Design.
+        </p>
+        <div class="hero-ctas">
+            <a href="#projects" class="btn-primary">See our experiments</a>
+        </div>
+        <dl class="hero-stats">
+            <div class="hero-stat">
+                <dt>Prototyping from rainy</dt>
+                <dd>Vancouver, Canada</dd>
+            </div>
+        </dl>
+    </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+        <span>3D Printing</span><span class="ticker-sep">·</span>
+        <span>Custom Software</span><span class="ticker-sep">·</span>
+        <span>Painting</span><span class="ticker-sep">·</span>
+        <span>Mold Making</span><span class="ticker-sep">·</span>
+        <span>Sculpture</span><span class="ticker-sep">·</span>
+        <span>Prototyping</span><span class="ticker-sep">·</span>
+        <span>3D Printing</span><span class="ticker-sep">·</span>
+        <span>Custom Software</span><span class="ticker-sep">·</span>
+        <span>Painting</span><span class="ticker-sep">·</span>
+        <span>Mold Making</span><span class="ticker-sep">·</span>
+        <span>Sculpture</span><span class="ticker-sep">·</span>
+        <span>Prototyping</span><span class="ticker-sep">·</span>
+    </div>
+</div>
+
+<section id="projects" aria-labelledby="projects-heading">
+    <div class="work-header reveal">
+        <div>
+            <p class="sec-eyebrow">Selected experiments</p>
+            <h2 class="sec-h2" id="projects-heading">Latests posts.</h2>
+        </div>
+    </div>
+    <div class="work-list reveal">
+        {% for post in site.posts %}
+        <a href="{{ post.url | relative_url }}" class="work-row">
+            <div class="work-thumb" aria-hidden="true">
+                {% if post.image %}
+                <img src="{{ post.image | relative_url }}" alt="">
+                {% else %}
+                <div class="thumb-canvas">
+                    <div class="thumb-canvas-cell" style="background: oklch(88% 0.005 240);"></div>
+                    <div class="thumb-canvas-cell"></div>
+                    <div class="thumb-canvas-cell" style="grid-column: span 2; background: oklch(93% 0.003 240);"></div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="work-info">
+                {% if post.tag %}<p class="work-tag">{{ post.tag }}</p>{% endif %}
+                <p class="work-title">{{ post.title }}</p>
+                {% if post.description %}<p class="work-desc">{{ post.description }}</p>{% endif %}
+            </div>
+            <span class="work-year">{{ post.year | default: post.date | date: "%Y" }}</span>
+        </a>
+        {% else %}
+        <p class="work-empty">Nothing posted so far, please check back later.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="about" aria-label="About the studio">
+    <div class="reveal about-body">
+        <p class="sec-eyebrow">About the studio</p>
+        <p class="about-text">
+            <strong>Azzano Design</strong> is an independent studio with a tight focus: software that helps artists do their best work. We believe the best tools are the ones you truly love using.
+        </p>       
+        <p class="about-text">
+            As artists, sometimes our experiments don't always work out... this site is a journal of sorts of various explorations, the goal of which is to help others discover new tools and ideas.
+        </p>
+    </div>
+</section>
+
+<section id="contact" aria-labelledby="contact-heading">
+    <p class="sec-eyebrow">Get in touch</p>
+    <h2 class="contact-h2" id="contact-heading">Let's build<br>something.</h2>
+    <p class="contact-sub">As a studio of one, we only take a handful of new projects each year. If you've got something you'd like to see built, and think we might be a good fit <br>— please reach out.</p>
+    <a href="mailto:{{ site.email }}" class="contact-cta" aria-label="Send a message, via email">Send a message</a>
+</section>

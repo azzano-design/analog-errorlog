@@ -1,0 +1,22 @@
+title: Analog Errorlog
+tagline: Behind the scenes of Azzano Design
+description: >-
+  Analog Errorlog is the behind the scenes journal of Azzano Design, which is an independent software studio building custom tools,
+  interfaces, and web experiences for artists from Vancouver, BC.
+url: "https://azzano.design"
+baseurl: ""
+
+email: brendan@azzano.design
+author: Brendan Azzano
+
+og_image: /assets/images/og-image.jpg
+gtm_id: GTM-NKGBLSKD
+
+permalink: /work/:title/
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .bundle

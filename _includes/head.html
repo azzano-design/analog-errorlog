@@ -1,0 +1,93 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% assign page_title = page.title | default: "" %}
+    {% if page_title != "" %}
+    <title>{{ page_title }} — {{ site.title }}</title>
+    {% else %}
+    <title>{{ site.title }} — {{ site.tagline }}</title>
+    {% endif %}
+
+    {% assign page_desc = page.description | default: site.description %}
+    <meta name="description" content="{{ page_desc }}" />
+
+    <!-- Open Graph -->
+    {% assign og_title = page.title | default: site.title | append: " — " | append: site.tagline %}
+    {% assign og_image = page.image | default: site.og_image %}
+    <meta property="og:title" content="{{ og_title }}" />
+    <meta property="og:description" content="{{ page_desc }}" />
+    <meta property="og:image" content="{{ site.url }}{{ og_image }}" />
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{ og_title }}" />
+    <meta name="twitter:description" content="{{ page_desc }}" />
+    <meta name="twitter:image" content="{{ site.url }}{{ og_image }}" />
+
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
+    <link rel="icon" type="image/png" href="assets/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Analog Errorlog" />
+    <link rel="manifest" href="assets/images/site.webmanifest" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "{{ site.title }}",
+          "url": "{{ site.url }}/",
+          "description": "{{ site.description }}"
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "{{ site.title }}",
+          "url": "{{ site.url }}/",
+          "email": "{{ site.email }}",
+          "foundingDate": "2020",
+          "description": "{{ site.description }}",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vancouver",
+            "addressCountry": "CA"
+          },
+          "areaServed": "Worldwide",
+          "serviceType": ["Custom Tool Development", "Interface & Interaction Design", "Web Development"],
+          "founder": {
+            "@type": "Person",
+            "name": "{{ site.author }}",
+            "email": "{{ site.email }}"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preload" as="font" href="{{ '/assets/fonts/argent-cf.woff2' | relative_url }}" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+    {% if page.use_three %}
+    <script type="importmap">
+        {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+            "fflate": "https://cdn.jsdelivr.net/npm/fflate@0.8.2/esm/browser.js"
+        }
+        }
+    </script>
+    <script type="module" src="{{ '/assets/js/index.js' | relative_url }}"></script>
+    {% endif %}
+</head>
